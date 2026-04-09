@@ -6,16 +6,21 @@ namespace BurgerKiosk
         {
             InitializeComponent();
             this.AcceptButton = btnOrder;
+
+            // 이벤트 핸들러 연결
+            rdoHamBurger.CheckedChanged += UpdateOrder;
+            rdoBulgogiBurger.CheckedChanged += UpdateOrder;
+            rdoChickenBurger.CheckedChanged += UpdateOrder;
+            chkPotato.CheckedChanged += UpdateOrder;
+            chkCola.CheckedChanged += UpdateOrder;
+            chkCheese.CheckedChanged += UpdateOrder;
+            chkSauce.CheckedChanged += UpdateOrder;
         }
-        int totalCost = 0;
-        private void btnOrder_Click(object sender, EventArgs e)
+
+        private void UpdateOrder(object sender, EventArgs e)
         {
-            if (!rdoHamBurger.Checked && !rdoBulgogiBurger.Checked && !rdoChickenBurger.Checked
-    && !chkPotato.Checked && !chkCola.Checked && !chkCheese.Checked && !chkSauce.Checked)
-            {
-                lblWarning.Visible = true;
-                return;
-            }
+            lstOrder.Items.Clear();
+            int totalCost = 0;
 
             if (rdoHamBurger.Checked)
             {
@@ -53,8 +58,19 @@ namespace BurgerKiosk
                 totalCost += 500;
                 lstOrder.Items.Add("소스 500원");
             }
-            lblWarning.Visible = false;
+
             lblTotalCost.Text = "총 금액 : " + totalCost.ToString("N0") + "원";
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            if (lstOrder.Items.Count == 0)
+            {
+                lblWarning.Visible = true;
+                return;
+            }
+            lblWarning.Visible = false;
+            MessageBox.Show("주문이 완료되었습니다!");
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -70,7 +86,6 @@ namespace BurgerKiosk
 
             lblWarning.Visible = false;
             lstOrder.Items.Clear();
-            totalCost = 0;
             lblTotalCost.Text = "총 금액 : 0원";
         }
     }
