@@ -47,6 +47,7 @@
             lstOrder = new ListBox();
             btnOrder = new Button();
             btnReset = new Button();
+            lblWarning = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -273,11 +274,24 @@
             btnReset.UseVisualStyleBackColor = false;
             btnReset.Click += btnReset_Click;
             // 
+            // lblWarning
+            // 
+            lblWarning.AutoSize = true;
+            lblWarning.Font = new Font("한컴 고딕", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            lblWarning.ForeColor = Color.Red;
+            lblWarning.Location = new Point(581, 497);
+            lblWarning.Name = "lblWarning";
+            lblWarning.Size = new Size(169, 26);
+            lblWarning.TabIndex = 14;
+            lblWarning.Text = "메뉴를 선택하세요";
+            lblWarning.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(908, 515);
+            ClientSize = new Size(908, 530);
+            Controls.Add(lblWarning);
             Controls.Add(btnReset);
             Controls.Add(btnOrder);
             Controls.Add(grpList);
@@ -319,5 +333,6 @@
         private Label lblTotalCost;
         private Button btnOrder;
         private Button btnReset;
+        private Label lblWarning;
     }
 }

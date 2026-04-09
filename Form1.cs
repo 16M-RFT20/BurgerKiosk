@@ -45,7 +45,15 @@ namespace BurgerKiosk
                 totalCost += 500;
                 lstOrder.Items.Add("소스 500원");
             }
+            lblWarning.Visible = false;
             lblTotalCost.Text = "총 금액 : " + totalCost.ToString("N0") + "원";
+
+            if (!rdoHamBurger.Checked && !rdoBulgogiBurger.Checked && !rdoChickenBurger.Checked
+                && !chkPotato.Checked && !chkCola.Checked && !chkCheese.Checked && !chkSauce.Checked)
+            {
+                lblWarning.Visible = true;
+                return;
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -59,6 +67,7 @@ namespace BurgerKiosk
             chkCheese.Checked = false;
             chkSauce.Checked = false;
 
+            lblWarning.Visible = false;
             lstOrder.Items.Clear();
             totalCost = 0;
             lblTotalCost.Text = "총 금액 : 0원";
