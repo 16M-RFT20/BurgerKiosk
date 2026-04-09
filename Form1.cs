@@ -67,8 +67,8 @@ namespace BurgerKiosk
             chkCheese.Checked = false;
             chkSauce.Checked = false;
 
-            lblWarning.Visible = false;
             lstOrder.Items.Clear();
+            lblWarning.Visible = false;
             totalCost = 0;
             lblTotalCost.Text = "총 금액 : 0원";
         }
